@@ -1,0 +1,46 @@
+.main-error404 {
+  text-align: center;
+  color: #353837;
+  padding-bottom: 3em;
+}
+.main-error404 .error-404 {
+  font-size: 288px;
+  font-weight: 700;
+}
+.main-error404 .error-msg {
+  font-size: 36px;
+  font-weight: 500;
+  margin-bottom: 4em;
+}
+.main-error404 a {
+  color: #353837;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 3em;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.container label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 10px;
+}
+.container .address {
+  margin-top: 10px;
+}
+.container .field-error {
+  color: red;
+}
+
+/*# sourceMappingURL=style.css.map */
