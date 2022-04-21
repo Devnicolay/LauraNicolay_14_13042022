@@ -5,7 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 const AtomDatePicker = () => {
   const [startDate, setStartDate] = useState(new Date());
   return (
-    <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+    <DatePicker  onChange={(date) => setStartDate(date)} />
   );
 };
 

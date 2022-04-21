@@ -6,6 +6,9 @@ import * as Yup from 'yup';
 import AtomSubmitButton from '../components/atoms/AtomSubmitButton.tsx';
 import MoleculeFieldText from '../components/molecules/MoleculeFieldText.tsx';
 import MoleculeDatePicker from '../components/molecules/MoleculeDatePicker.tsx';
+import MoleculeFieldsetAddress from '../components/molecules/MoleculeFieldsetAddress.tsx';
+import {states} from '../assets/statesList'
+import MoleculeDataList from '../components/molecules/MoleculeDataList.tsx';
 
 interface Values {
     firstName: string;
@@ -58,6 +61,9 @@ const Home = () => {
 
           <MoleculeDatePicker htmlfor="startDate" nameLabel={"Start Date"} />
 
+          <MoleculeFieldsetAddress states={states} />
+
+          <MoleculeDataList />
 
           <AtomSubmitButton />
         </Form>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const SubmitButton = () => {
     return (
-        <button type="submit">Submit</button>
+        <button type="submit">Save</button>
     );
 };
 
