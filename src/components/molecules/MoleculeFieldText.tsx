@@ -14,7 +14,7 @@ const MoleculeFieldText = (props: FieldText) => {
         <div>
             <AtomLabel htmlfor={props.htmlfor} nameLabel={props.nameLabel} />
           <AtomInput id={props.id} type={"text"} />
-          <AtomErrorMsg />
+          <AtomErrorMsg label={props.id} />
         </div>
     );
 };

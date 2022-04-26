@@ -1,4 +1,5 @@
 import React from 'react';
+import { Field } from 'formik';
 import AtomLabel from '../atoms/AtomLabel.tsx';
 import AtomInput from '../atoms/AtomInput.tsx';
 import AtomErrorMsg from '../atoms/AtomErrorMsg.tsx';
@@ -18,23 +19,29 @@ const MoleculeFieldsetAddress = (props: FormData) => {
             <legend>Address</legend>
             <AtomLabel htmlfor="street" nameLabel={"Street"} />
           <AtomInput id={"street"} type={"text"} />
-          <AtomErrorMsg />
+          <AtomErrorMsg label={"street"} />
 
           <AtomLabel htmlfor="city" nameLabel={"City"} />
           <AtomInput id={"city"} type={"text"} />
-          <AtomErrorMsg />
+          <AtomErrorMsg label={"city"}/>
 
           <AtomLabel htmlfor="state" nameLabel={"State"} />
-          <select name="state" id="state">
+          <Field as="select" name="state" id="state">
+          {states.map((state,index) => (
+                  <option key={index} value={state.label}>{state.label}</option>
+              ))}
+          </Field>
+          <AtomErrorMsg label={"state"} />
+          {/* <select name="state" id="state">
               {states.map((state,index) => (
                   <option key={index} value={state.label}>{state.label}</option>
               ))}
           </select>
-          <AtomErrorMsg />
+          <AtomErrorMsg label={"state"} /> */}
 
-          <AtomLabel htmlfor="zip-code" nameLabel={"Zip Code"} />
-          <AtomInput id={"zip-code"} type={"number"} />
-          <AtomErrorMsg />
+          <AtomLabel htmlfor="zipCode" nameLabel={"Zip Code"} />
+          <AtomInput id={"zipCode"} type={"number"} />
+          <AtomErrorMsg label={"zipCode"} />
         </fieldset>
     );
 };

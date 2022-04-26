@@ -1,10 +1,14 @@
 import React from 'react';
 import { ErrorMessage } from 'formik';
 
-const AtomErrorMsg = () => {
+interface MsgError {
+  label: string,
+}
+
+const AtomErrorMsg = (props: MsgError) => {
     return (
             <ErrorMessage
-            name="firstName"
+            name={props.label}
             component="div"
             className="field-error"
           />

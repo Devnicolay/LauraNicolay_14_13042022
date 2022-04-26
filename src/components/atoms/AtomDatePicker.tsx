@@ -2,10 +2,15 @@ import React, {useState} from 'react';
 import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css'
 
-const AtomDatePicker = () => {
+interface AtomDatePickerProps {
+  id: string;
+  value: string;
+}
+
+const AtomDatePicker = (props: AtomDatePickerProps) => {
   const [startDate, setStartDate] = useState(new Date());
   return (
-    <DatePicker  onChange={(date) => setStartDate(date)} />
+    <DatePicker name={props.id} id={props.id} value={props.value} selected={startDate} onChange={(date) => setStartDate(date) } />
   );
 };
 
