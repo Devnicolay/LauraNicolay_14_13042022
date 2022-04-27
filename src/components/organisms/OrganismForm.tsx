@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 
@@ -8,7 +8,8 @@ import MoleculeDatePicker from '../molecules/MoleculeDatePicker.tsx';
 import MoleculeFieldsetAddress from '../molecules/MoleculeFieldsetAddress.tsx';
 import {states} from '../../assets/statesList'
 import MoleculeDataList from '../molecules/MoleculeDataList.tsx';
-
+import { employeesListContext } from "../../Context/ContextProvider";
+import OrganismModal from './OrganismModal.tsx';
 
 interface Values {
     firstName: string;
@@ -64,7 +65,17 @@ const SignUpSchema = Yup.object().shape({
 
 
 const OrganismForm = () => {
-    return (
+  const context = React.useContext(employeesListContext);
+
+  const [activeModal, setActiveModal] = useState(false)
+
+    console.log(activeModal)
+
+    const closeModal = () => {
+      console.log("modale fermée")
+      setActiveModal(false)
+    }
+    return  (
         <Formik
         initialValues={{
           firstName: '',
@@ -83,10 +94,12 @@ const OrganismForm = () => {
           { setSubmitting }: FormikHelpers<Values>
         ) => {
           setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
+            // alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
           }, 500);
           console.log(values)
+          context.addEmployee({ firstName: values.firstName, lastName: values.lastName, dateOfBirth: values.dateOfBirth, startDate: values.startDate, street: values.street, city: values.city, state: values.state, zipCode: values.zipCode, department: values.department });
+          setActiveModal(true)
         }}
       >
         <Form>
@@ -103,6 +116,8 @@ const OrganismForm = () => {
           <MoleculeDataList />
 
           <AtomSubmitButton />
+
+          <OrganismModal activeModal={activeModal} setActiveModal={setActiveModal} />
         </Form>
       </Formik>
     );
