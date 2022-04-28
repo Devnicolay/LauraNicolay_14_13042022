@@ -89,4 +89,31 @@
   cursor: pointer;
 }
 
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+table thead th {
+  padding: 8px 10px;
+}
+table tbody td {
+  border-top: 1px solid #ddd;
+  padding: 8px 10px;
+}
+table tbody tr:nth-child(odd) {
+  background: #F9F9F9;
+}
+table tbody tr:nth-child(odd) td:first-child {
+  background-color: #F1F1F1;
+}
+table tbody tr:nth-child(even) td:first-child {
+  background-color: #FAFAFA;
+}
+table tbody tr:first-child {
+  border-top: 1px solid black;
+}
+table tbody tr:last-child {
+  border-bottom: 1px solid black;
+}
+
 /*# sourceMappingURL=style.css.map */

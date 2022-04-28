@@ -14,10 +14,10 @@ const EmployeePage = () => {
             <h1>Current Employees</h1>
             </div>
             <div className="container">
-            {context.employees.map((employee, index) => (
-                <p key={index}>{employee.firstName} {employee.lastName} {employee.dateOfBirth.toLocaleDateString()} {employee.startDate.toLocaleDateString()} {employee.street} {employee.city} {employee.state} {employee.zipCode} {employee.department} </p>
-            ))}
-            <DataTable />
+            {/* {context.employees.map((employee, index) => (
+                <p key={index}>{employee.firstName} {employee.lastName} {employee.dateOfBirth} {employee.startDate} {employee.street} {employee.city} {employee.state} {employee.zipCode} {employee.department} </p>
+            ))} */}
+            <DataTable dataList={context.employees} />
                 <Link to={pathHome}>Home</Link>
             </div>
         </div>

@@ -3,15 +3,15 @@ import React, { useState } from "react";
 export const employeesListContext = React.createContext({
   employees: [
     {
-      firstName: "Pierre",
-      lastName: "barboni",
+      firstName: "",
+      lastName: "",
       startDate: "",
-      department: "Sales",
+      department: "",
       dateOfBirth: "",
-      street: "rue lilas",
-      city: "villerupt",
-      state: "Alaska",
-      zipCode: "123",
+      street: "",
+      city: "",
+      state: "",
+      zipCode: "",
     },
   ],
 });

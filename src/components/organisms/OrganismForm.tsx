@@ -98,7 +98,7 @@ const OrganismForm = () => {
             setSubmitting(false);
           }, 500);
           console.log(values)
-          context.addEmployee({ firstName: values.firstName, lastName: values.lastName, dateOfBirth: values.dateOfBirth, startDate: values.startDate, street: values.street, city: values.city, state: values.state, zipCode: values.zipCode, department: values.department });
+          context.addEmployee({ firstName: values.firstName, lastName: values.lastName, dateOfBirth: values.dateOfBirth.toLocaleDateString(), startDate: values.startDate.toLocaleDateString(), street: values.street, city: values.city, state: values.state, zipCode: values.zipCode, department: values.department });
           setActiveModal(true)
         }}
       >
@@ -117,7 +117,7 @@ const OrganismForm = () => {
 
           <AtomSubmitButton />
 
-          <OrganismModal activeModal={activeModal} setActiveModal={setActiveModal} />
+          <OrganismModal activeModal={activeModal} closeModal={closeModal} />
         </Form>
       </Formik>
     );
