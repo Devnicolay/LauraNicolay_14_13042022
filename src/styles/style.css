@@ -50,7 +50,7 @@
   height: 2em;
   border: 1px solid #c5c5c5;
   border-radius: 4px;
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
   color: #454545;
   font-size: 1em;
   padding-left: 0.8em;
@@ -101,13 +101,7 @@ table tbody td {
   padding: 8px 10px;
 }
 table tbody tr:nth-child(odd) {
-  background: #F9F9F9;
-}
-table tbody tr:nth-child(odd) td:first-child {
-  background-color: #F1F1F1;
-}
-table tbody tr:nth-child(even) td:first-child {
-  background-color: #FAFAFA;
+  background: #f9f9f9;
 }
 table tbody tr:first-child {
   border-top: 1px solid black;

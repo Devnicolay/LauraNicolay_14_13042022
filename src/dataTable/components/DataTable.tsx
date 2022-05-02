@@ -1,55 +1,33 @@
-import React, {useState, useEffect} from 'react';
-interface PropsData {
-	dataList: string []
+import React from "react";
+// @ts-ignore
+import TableBody from "./TableBody.tsx";
+// @ts-ignore
+import TableHead from "./TableHead.tsx";
+
+interface TableProps {
+  data: Array<any>;
 }
 
-const DataTable = (props: PropsData) => {
+const DataTable: React.FC<TableProps> = ({ data }) => {
+  // Write here label and id for columns
+  const columns = [
+    { label: "First Name", id: "firstName" },
+    { label: "Last Name", id: "lastName" },
+    { label: "Start Date", id: "startDate" },
+    { label: "Department", id: "department" },
+    { label: "Date of Birth", id: "dateOfBirth" },
+    { label: "Street", id: "street" },
+    { label: "City", id: "city" },
+    { label: "State", id: "state" },
+    { label: "Zip Code", id: "zipCode" },
+  ];
 
-	console.log(props.dataList)
-
-	// const [userList, setUserList] = useState([])
-
-	// useEffect(() => {
-	// 	setUserList(props.dataList)
-	// }, [])
-
-	// userList && Object.keys(userList[0]).map((key) => 
-	// 	console.log(key)
-	// )
-
-	console.log(props.dataList)
-
-    return (
-            <table id="data-table">
-				<thead>
-					<tr>
-						{/* Return keys of value for columns table */}
-						{props.dataList && Object.keys(props.dataList[0]).map((key, index) => {
-							return (<th key={index}>{key}</th>)
-						})}
-					</tr>
-				</thead>
-				<tbody>
-					{
-						props.dataList.map((user, index) => {
-							return (
-							<tr>
-								<td key="1">{user.firstName}</td>
-								<td key="2">{user.lastName}</td>
-								<td key="3">{user.dateOfBirth}</td>
-								<td key="4">{user.startDate}</td>
-								<td key="5">{user.street}</td>
-								<td key="6">{user.city}</td>
-								<td key="7">{user.state}</td>
-								<td key="8">{user.zipCode}</td>
-								<td key="9">{user.department}</td>
-							</tr>
-							)
-						})
-					}
-                </tbody>
-            </table>
-    );
+  return (
+    <table id="data-table">
+      <TableHead columns={columns} />
+      <TableBody columns={columns} data={data} />
+    </table>
+  );
 };
 
 export default DataTable;

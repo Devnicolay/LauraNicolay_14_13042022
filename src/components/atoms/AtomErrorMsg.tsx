@@ -1,18 +1,12 @@
-import React from 'react';
-import { ErrorMessage } from 'formik';
+import React from "react";
+import { ErrorMessage } from "formik";
 
 interface MsgError {
-  label: string,
+  label: string;
 }
 
-const AtomErrorMsg = (props: MsgError) => {
-    return (
-            <ErrorMessage
-            name={props.label}
-            component="div"
-            className="field-error"
-          />
-    );
+const AtomErrorMsg: React.FC<MsgError> = ({ label }) => {
+  return <ErrorMessage name={label} component="div" className="field-error" />;
 };
 
 export default AtomErrorMsg;

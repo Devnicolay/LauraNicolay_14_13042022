@@ -1,14 +1,12 @@
-import React from 'react';
+import React from "react";
 
 interface LabelProps {
-    htmlfor: string;
-    nameLabel: string;
+  htmlfor: string;
+  nameLabel: string;
 }
 
-const Label = (props: LabelProps) => {
-    return (
-            <label htmlFor={props.htmlfor}>{props.nameLabel}</label>
-    );
+const Label: React.FC<LabelProps> = ({ htmlfor, nameLabel }) => {
+  return <label htmlFor={htmlfor}>{nameLabel}</label>;
 };
 
 export default Label;
