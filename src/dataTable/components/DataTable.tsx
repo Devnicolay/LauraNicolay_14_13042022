@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 // @ts-ignore
 import TableBody from "./TableBody.tsx";
 // @ts-ignore
@@ -22,9 +22,41 @@ const DataTable: React.FC<TableProps> = ({ data }) => {
     { label: "Zip Code", id: "zipCode" },
   ];
 
+  const [order, setOrder] = useState({ id: "", order: "desc" });
+
+  const sortingAsc = (id) => {
+    console.log(id);
+    setOrder({ id: id, order: "asc" });
+    console.log("sorting Ascendant");
+  };
+
+  const sortingDesc = (id) => {
+    console.log(id);
+    setOrder({ id: id, order: "desc" });
+    console.log("sorting Descendant");
+  };
+
+  console.log(order.id);
+
+  useEffect(() => {
+    const idColumn = order.id;
+    if (order.order === "asc") {
+      console.log(idColumn);
+      data.sort((a, b) => (a.idColumn < b.idColumn ? 1 : -1));
+    } else if (order.order === "desc") {
+      console.log(idColumn);
+      data.sort((a, b) => (a.idColumn > b.idColumn ? 1 : -1));
+    }
+    console.log(data);
+  }, [order]);
+
   return (
     <table id="data-table">
-      <TableHead columns={columns} />
+      <TableHead
+        columns={columns}
+        sortingAsc={sortingAsc}
+        sortingDesc={sortingDesc}
+      />
       <TableBody columns={columns} data={data} />
     </table>
   );

@@ -95,6 +95,19 @@ table {
 }
 table thead th {
   padding: 8px 10px;
+  position: relative;
+}
+table thead th .icons-sort {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+}
+table thead th .icons-sort .sortAsc,
+table thead th .icons-sort .sortDesc {
+  height: 12px;
+  width: 10px;
 }
 table tbody td {
   border-top: 1px solid #ddd;
