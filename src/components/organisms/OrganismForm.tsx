@@ -80,6 +80,7 @@ const OrganismForm = () => {
     console.log("modale fermée");
     setActiveModal(false);
   };
+
   return (
     <Formik
       initialValues={{
@@ -114,7 +115,7 @@ const OrganismForm = () => {
         setActiveModal(true);
       }}
     >
-      <Form>
+      <Form className="form-employee">
         <MoleculeFieldText
           htmlfor="firstName"
           nameLabel={"First Name"}

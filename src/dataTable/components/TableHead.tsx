@@ -4,28 +4,23 @@ import { faSortUp, faSortDown } from "@fortawesome/free-solid-svg-icons";
 
 interface TableHeadProps {
   columns: Array<{ label: string; id: string }>;
-  sortingAsc: () => void;
-  sortingDesc: () => void;
+  sorting: (id) => void;
 }
 
 // const HandleClick = (e) => {
 //   e.target.style.backgroundColor = "#FAFAFA";
 // };
 
-const TableHead: React.FC<TableHeadProps> = ({
-  columns,
-  sortingAsc,
-  sortingDesc,
-}) => {
+const TableHead: React.FC<TableHeadProps> = ({ columns, sorting }) => {
   return (
     <thead>
       <tr>
         {columns.map((item) => {
           return (
-            <th id={item.id} key={item.id}>
+            <th id={item.id} key={item.id} onClick={() => sorting(item.id)}>
               {item.label}
               <div className="icons-sort">
-                <FontAwesomeIcon
+                {/* <FontAwesomeIcon
                   className="sortAsc"
                   icon={faSortUp}
                   onClick={() => {
@@ -38,7 +33,7 @@ const TableHead: React.FC<TableHeadProps> = ({
                   onClick={() => {
                     sortingDesc(item.id);
                   }}
-                />
+                /> */}
               </div>
             </th>
           );

@@ -31,7 +31,7 @@
   align-items: center;
   justify-content: center;
 }
-.container form {
+.container .form-employee {
   width: 300px;
 }
 .container label {
@@ -89,38 +89,49 @@
   cursor: pointer;
 }
 
-table {
+.container-data-table {
+  width: 100%;
+}
+.container-data-table table {
   border-collapse: collapse;
   width: 100%;
 }
-table thead th {
+.container-data-table table thead th {
   padding: 8px 10px;
   position: relative;
 }
-table thead th .icons-sort {
+.container-data-table table thead th .icons-sort {
   position: absolute;
   top: 5px;
   right: 0;
   display: flex;
   flex-direction: column;
 }
-table thead th .icons-sort .sortAsc,
-table thead th .icons-sort .sortDesc {
+.container-data-table table thead th .icons-sort .sortAsc,
+.container-data-table table thead th .icons-sort .sortDesc {
   height: 12px;
   width: 10px;
 }
-table tbody td {
+.container-data-table table tbody td {
   border-top: 1px solid #ddd;
   padding: 8px 10px;
 }
-table tbody tr:nth-child(odd) {
+.container-data-table table tbody tr:nth-child(odd) {
   background: #f9f9f9;
 }
-table tbody tr:first-child {
+.container-data-table table tbody tr:first-child {
   border-top: 1px solid black;
 }
-table tbody tr:last-child {
+.container-data-table table tbody tr:last-child {
   border-bottom: 1px solid black;
+}
+
+.search {
+  display: flex;
+  justify-content: flex-end;
+}
+.search input {
+  margin: 1em;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -16,13 +16,13 @@ const Home = () => {
       <div className="container">
         <Link to={pathEmployeePage}>View Current Employees</Link>
         <h2>Create Employee</h2>
-        {context.employees.map((employee, index) => (
+        {/* {context.employees.map((employee, index) => (
           <p key={index}>
             {employee.firstName} {employee.lastName} {employee.dateOfBirth}{" "}
             {employee.startDate} {employee.street} {employee.city}{" "}
             {employee.state} {employee.zipCode} {employee.department}{" "}
           </p>
-        ))}
+        ))} */}
         <OrganismForm />
       </div>
     </div>
