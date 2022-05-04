@@ -8,6 +8,12 @@ interface ModalProps {
 }
 
 const OrganismModal: React.FC<ModalProps> = ({ activeModal, closeModal }) => {
+  document.onkeydown = function (e) {
+    if (e.key === "Escape") {
+      closeModal();
+    }
+  };
+
   return (
     <div>
       {activeModal ? (
