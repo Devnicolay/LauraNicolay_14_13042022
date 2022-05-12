@@ -81,6 +81,8 @@ const OrganismForm = () => {
     setActiveModal(false);
   };
 
+  console.log(startDateOfBirth);
+
   return (
     <Formik
       initialValues={{
@@ -104,8 +106,8 @@ const OrganismForm = () => {
         context.addEmployee({
           firstName: values.firstName,
           lastName: values.lastName,
-          dateOfBirth: startDateOfBirth.toLocaleDateString(),
-          startDate: startDate.toLocaleDateString(),
+          dateOfBirth: startDateOfBirth.toLocaleDateString("en-US"),
+          startDate: startDate.toLocaleDateString("en-US"),
           street: values.street,
           city: values.city,
           state: values.state,

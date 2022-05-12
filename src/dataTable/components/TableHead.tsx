@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSortUp, faSortDown } from "@fortawesome/free-solid-svg-icons";
 
 interface TableHeadProps {
-  columns: Array<{ label: string; id: string }>;
-  sorting: (id) => void;
+  columns: Array<{ label: string; id: string; type: string }>;
+  sorting: (id, type) => void;
 }
 
 // const HandleClick = (e) => {
@@ -17,7 +17,11 @@ const TableHead: React.FC<TableHeadProps> = ({ columns, sorting }) => {
       <tr>
         {columns.map((item) => {
           return (
-            <th id={item.id} key={item.id} onClick={() => sorting(item.id)}>
+            <th
+              id={item.id}
+              key={item.id}
+              onClick={() => sorting(item.id, item.type)}
+            >
               {item.label}
               <div className="icons-sort">
                 {/* <FontAwesomeIcon

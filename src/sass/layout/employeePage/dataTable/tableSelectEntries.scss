@@ -1,0 +1,16 @@
+.data-table-head {
+  display: flex;
+  justify-content: space-between;
+  .table-length {
+    label {
+      select {
+        width: 3em;
+        height: 1.3em;
+        margin-left: 0.5em;
+        margin-right: 0.5em;
+        padding-left: 0;
+        background-color: white;
+      }
+    }
+  }
+}
