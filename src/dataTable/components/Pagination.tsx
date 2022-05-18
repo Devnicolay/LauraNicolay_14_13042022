@@ -18,7 +18,6 @@ const Pagination: React.FC<PaginationProps> = ({
   const [pages, setPages] = useState(Math.ceil(data.length / dataLimit));
   //   const [currentPage, setCurrentPage] = useState(1);
 
-  console.log(pages, data.length, dataLimit);
   const goToNextPage = () => {
     console.log("page suivante");
     setCurrentPage(currentPage + 1);

@@ -4,6 +4,8 @@ import Pagination from "./Pagination.tsx";
 // @ts-ignore
 import TableBody from "./TableBody.tsx";
 // @ts-ignore
+import TableDataInfo from "./TableDataInfo.tsx";
+// @ts-ignore
 import TableHead from "./TableHead.tsx";
 // @ts-ignore
 import TableLength from "./TableLength.tsx";
@@ -15,7 +17,6 @@ interface TableProps {
 }
 
 const DataTable: React.FC<TableProps> = ({ data }) => {
-  console.log(data);
   // Write here label and id for columns
   const columns = [
     { label: "First Name", id: "firstName", type: "string" },
@@ -89,28 +90,59 @@ const DataTable: React.FC<TableProps> = ({ data }) => {
    * Sort data on clicked column
    */
   const getSort = () => {
-    console.log(order.column);
+    // if (order.type === "date") {
+    //   if (order.order === "ASC" && order.column) {
+    //     console.log("turn on ASC");
+    //     const sorted = data
+    //       .slice(0)
+    //       .sort((a, b) =>
+    //         new Date(a[order.column]) > new Date(b[order.column]) ? 1 : -1
+    //       );
+    //     console.log(sorted);
+    //     return sorted;
+    //   }
+    //   if (order.order === "DESC" && order.column) {
+    //     console.log("turn on DESC");
+    //     const sorted = data
+    //       .slice(0)
+    //       .sort((a, b) =>
+    //         new Date(a[order.column]) < new Date(b[order.column]) ? 1 : -1
+    //       );
+    //     console.log(sorted);
+    //     return sorted;
+    //   }
+    // }
     // Sort date type
+    // if (order.type === "date") {
+    //   if (order.order === "ASC" && order.column) {
+    //     console.log("turn on ASC");
+    //     data.slice(0).sort((a, b) => {
+    //       return new Date(a[order.column]) > new Date(b[order.column]) ? 1 : -1;
+    //     });
+    //   }
+    //   if (order.order === "DESC" && order.column) {
+    //     console.log("turn on DESC");
+    //     data.slice(0).sort((a, b) => {
+    //       return new Date(a[order.column]) < new Date(b[order.column]) ? 1 : -1;
+    //     });
+    //   }
+    // }
     if (order.type === "date") {
       if (order.order === "ASC" && order.column) {
         console.log("turn on ASC");
-        const sorted = data
-          .slice(0)
-          .sort((a, b) =>
-            new Date(a.startDate) > new Date(b.startDate) ? 1 : -1
-          );
-        console.log(sorted);
-        return sorted;
+        data.slice(0).sort((a, b) => {
+          const dateA = new Date(a[order.column]);
+          const dateB = new Date(a[order.column]);
+          return dateA - dateB;
+        });
       }
       if (order.order === "DESC" && order.column) {
         console.log("turn on DESC");
-        const sorted = data
-          .slice(0)
-          .sort((a, b) =>
-            new Date(a.startDate) < new Date(b.startDate) ? 1 : -1
-          );
-        console.log(sorted);
-        return sorted;
+        data.slice(0).sort((a, b) => {
+          const dateA = new Date(a[order.column]);
+          const dateB = new Date(a[order.column]);
+          return dateA + dateB;
+        });
       }
     }
     // Sort number type
@@ -163,6 +195,7 @@ const DataTable: React.FC<TableProps> = ({ data }) => {
     return sliceData;
   };
 
+  console.log(data);
   return (
     <div className="container-data-table">
       <div className="data-table-head">
@@ -171,16 +204,23 @@ const DataTable: React.FC<TableProps> = ({ data }) => {
       </div>
 
       <table id="data-table">
-        <TableHead columns={columns} sorting={sorting} />
+        <TableHead columns={columns} sorting={sorting} iconSort={order} />
         <TableBody columns={columns} data={getFilterData()} />
       </table>
-      <Pagination
-        data={data}
-        dataLimit={dataLimit}
-        pageLimit="5"
-        setCurrentPage={setCurrentPage}
-        currentPage={currentPage}
-      />
+      <div className="data-table-bottom">
+        <TableDataInfo
+          dataLimit={dataLimit}
+          dataLength={data.length}
+          currentPage={currentPage}
+        />
+        <Pagination
+          data={data}
+          dataLimit={dataLimit}
+          pageLimit="5"
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+        />
+      </div>
     </div>
   );
 };

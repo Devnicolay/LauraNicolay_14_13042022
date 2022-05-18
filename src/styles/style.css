@@ -148,6 +148,11 @@
   background-color: white;
 }
 
+.data-table-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
 .pagination {
   display: flex;
   align-items: flex-end;
