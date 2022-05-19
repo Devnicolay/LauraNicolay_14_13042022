@@ -23,18 +23,12 @@ const MoleculeFieldsetAddress = () => {
       <AtomLabel htmlfor="state" nameLabel={"State"} />
       <Field as="select" name="state" id="state">
         {states.map((state, index) => (
-          <option key={index} value={state.label}>
-            {state.label}
+          <option key={index} value={state.abbreviation}>
+            {state.name}
           </option>
         ))}
       </Field>
       <AtomErrorMsg label={"state"} />
-      {/* <select name="state" id="state">
-              {states.map((state,index) => (
-                  <option key={index} value={state.label}>{state.label}</option>
-              ))}
-          </select>
-          <AtomErrorMsg label={"state"} /> */}
 
       <AtomLabel htmlfor="zipCode" nameLabel={"Zip Code"} />
       <AtomInput id={"zipCode"} type={"number"} />

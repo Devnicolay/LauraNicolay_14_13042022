@@ -89,62 +89,30 @@ const DataTable: React.FC<TableProps> = ({ data }) => {
   /**
    * Sort data on clicked column
    */
-  const getSort = () => {
-    // if (order.type === "date") {
-    //   if (order.order === "ASC" && order.column) {
-    //     console.log("turn on ASC");
-    //     const sorted = data
-    //       .slice(0)
-    //       .sort((a, b) =>
-    //         new Date(a[order.column]) > new Date(b[order.column]) ? 1 : -1
-    //       );
-    //     console.log(sorted);
-    //     return sorted;
-    //   }
-    //   if (order.order === "DESC" && order.column) {
-    //     console.log("turn on DESC");
-    //     const sorted = data
-    //       .slice(0)
-    //       .sort((a, b) =>
-    //         new Date(a[order.column]) < new Date(b[order.column]) ? 1 : -1
-    //       );
-    //     console.log(sorted);
-    //     return sorted;
-    //   }
-    // }
-    // Sort date type
-    // if (order.type === "date") {
-    //   if (order.order === "ASC" && order.column) {
-    //     console.log("turn on ASC");
-    //     data.slice(0).sort((a, b) => {
-    //       return new Date(a[order.column]) > new Date(b[order.column]) ? 1 : -1;
-    //     });
-    //   }
-    //   if (order.order === "DESC" && order.column) {
-    //     console.log("turn on DESC");
-    //     data.slice(0).sort((a, b) => {
-    //       return new Date(a[order.column]) < new Date(b[order.column]) ? 1 : -1;
-    //     });
-    //   }
-    // }
+  const getSort = (data) => {
     if (order.type === "date") {
       if (order.order === "ASC" && order.column) {
         console.log("turn on ASC");
-        data.slice(0).sort((a, b) => {
-          const dateA = new Date(a[order.column]);
-          const dateB = new Date(a[order.column]);
-          return dateA - dateB;
-        });
+        const sorted = data
+          .slice(0)
+          .sort((a, b) =>
+            new Date(a[order.column]) > new Date(b[order.column]) ? 1 : -1
+          );
+        console.log(sorted);
+        return sorted;
       }
       if (order.order === "DESC" && order.column) {
         console.log("turn on DESC");
-        data.slice(0).sort((a, b) => {
-          const dateA = new Date(a[order.column]);
-          const dateB = new Date(a[order.column]);
-          return dateA + dateB;
-        });
+        const sorted = data
+          .slice(0)
+          .sort((a, b) =>
+            new Date(a[order.column]) < new Date(b[order.column]) ? 1 : -1
+          );
+        console.log(sorted);
+        return sorted;
       }
     }
+
     // Sort number type
     if (order.type === "number") {
       if (order.order === "ASC" && order.column) {
@@ -169,6 +137,7 @@ const DataTable: React.FC<TableProps> = ({ data }) => {
         a[order.column].toLowerCase() < b[order.column].toLowerCase() ? 1 : -1
       );
     }
+    return data;
   };
 
   /**
@@ -176,9 +145,8 @@ const DataTable: React.FC<TableProps> = ({ data }) => {
    * @returns data sorted if click on column, or data filtered with search input or data with pagination
    */
   const getFilterData = () => {
-    const filterData = data;
+    const filterData = getSort(data);
     // Sort data on clicked column
-    getSort();
     // If use search input
     if (valueSearch.length >= 1) {
       const dataFilter = filterData.filter((element) =>

@@ -81,8 +81,6 @@ const OrganismForm = () => {
     setActiveModal(false);
   };
 
-  console.log(startDateOfBirth);
-
   return (
     <Formik
       initialValues={{
@@ -92,9 +90,9 @@ const OrganismForm = () => {
         startDate: new Date(),
         street: "",
         city: "",
-        state: "",
+        state: "AL",
         zipCode: "",
-        department: "",
+        department: "Sales",
       }}
       // validationSchema={SignUpSchema}
       onSubmit={(values: Values, { setSubmitting }: FormikHelpers<Values>) => {
@@ -102,7 +100,6 @@ const OrganismForm = () => {
           // alert(JSON.stringify(values, null, 2));
           setSubmitting(false);
         }, 500);
-        console.log(values);
         context.addEmployee({
           firstName: values.firstName,
           lastName: values.lastName,

@@ -25,7 +25,6 @@ const TableHead: React.FC<TableHeadProps> = ({
     <thead>
       <tr>
         {columns.map((item) => {
-          console.log(iconSort.column);
           return (
             <th
               id={item.id}
