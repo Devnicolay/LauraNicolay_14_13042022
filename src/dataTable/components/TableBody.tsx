@@ -6,7 +6,6 @@ interface TableBodyProps {
 }
 
 const TableBody: React.FC<TableBodyProps> = ({ columns, data }) => {
-  console.log(data);
   return (
     <tbody>
       {data.map((item) => {

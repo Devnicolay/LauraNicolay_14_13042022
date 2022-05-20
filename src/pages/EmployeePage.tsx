@@ -7,7 +7,6 @@ import DataTable from "../dataTable/components/DataTable.tsx";
 
 const EmployeePage = () => {
   const context = React.useContext(employeesListContext);
-  console.log(context.employees);
 
   return (
     <div className="employees-page">

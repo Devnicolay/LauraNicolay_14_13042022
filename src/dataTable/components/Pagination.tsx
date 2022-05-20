@@ -19,12 +19,10 @@ const Pagination: React.FC<PaginationProps> = ({
   //   const [currentPage, setCurrentPage] = useState(1);
 
   const goToNextPage = () => {
-    console.log("page suivante");
     setCurrentPage(currentPage + 1);
   };
 
   const goToPreviousPage = () => {
-    console.log("page précédente");
     setCurrentPage(currentPage - 1);
   };
 

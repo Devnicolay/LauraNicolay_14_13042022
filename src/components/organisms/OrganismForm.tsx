@@ -77,7 +77,6 @@ const OrganismForm = () => {
   const [startDateOfBirth, setStartDateOfBirth] = useState(new Date());
 
   const closeModal = () => {
-    console.log("modale fermée");
     setActiveModal(false);
   };
 

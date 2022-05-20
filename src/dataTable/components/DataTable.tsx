@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 // @ts-ignore
 import Pagination from "./Pagination.tsx";
 // @ts-ignore
@@ -58,7 +58,7 @@ const DataTable: React.FC<TableProps> = ({ data }) => {
   };
 
   /**
-   *
+   * Get value for search input ok dataTable
    * @param valueTarget value for search input
    */
   const onChangeSearch = (valueTarget) => {
@@ -66,7 +66,7 @@ const DataTable: React.FC<TableProps> = ({ data }) => {
   };
 
   /**
-   *
+   * Get value for select entries of dataTable
    * @param valueTarget value for select entries
    */
   const onChangeSelect = (valueTarget) => {
@@ -74,41 +74,26 @@ const DataTable: React.FC<TableProps> = ({ data }) => {
   };
 
   /**
-   * For update data with filter for search input
-   */
-  // useEffect(() => {
-  //   data.filter((itemData) =>
-  //     JSON.stringify(Object(itemData))
-  //       .toLowerCase()
-  //       .includes(valueSearch.toLowerCase())
-  //   );
-  //   console.log(dataFilter);
-  //   setDatas(dataFilter);
-  // }, [valueSearch]);
-
-  /**
    * Sort data on clicked column
+   * @param data data of dataTable
    */
   const getSort = (data) => {
+    // Sort date type
     if (order.type === "date") {
       if (order.order === "ASC" && order.column) {
-        console.log("turn on ASC");
         const sorted = data
           .slice(0)
           .sort((a, b) =>
             new Date(a[order.column]) > new Date(b[order.column]) ? 1 : -1
           );
-        console.log(sorted);
         return sorted;
       }
       if (order.order === "DESC" && order.column) {
-        console.log("turn on DESC");
         const sorted = data
           .slice(0)
           .sort((a, b) =>
             new Date(a[order.column]) < new Date(b[order.column]) ? 1 : -1
           );
-        console.log(sorted);
         return sorted;
       }
     }
@@ -141,12 +126,12 @@ const DataTable: React.FC<TableProps> = ({ data }) => {
   };
 
   /**
-   *
+   * Get data filtered for dataTable
    * @returns data sorted if click on column, or data filtered with search input or data with pagination
    */
   const getFilterData = () => {
-    const filterData = getSort(data);
     // Sort data on clicked column
+    const filterData = getSort(data);
     // If use search input
     if (valueSearch.length >= 1) {
       const dataFilter = filterData.filter((element) =>
@@ -163,7 +148,6 @@ const DataTable: React.FC<TableProps> = ({ data }) => {
     return sliceData;
   };
 
-  console.log(data);
   return (
     <div className="container-data-table">
       <div className="data-table-head">

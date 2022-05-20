@@ -11,18 +11,19 @@ const TableDataInfo: React.FC<TableDataInfoProps> = ({
   dataLength,
   currentPage,
 }) => {
-  const indexDataStartForPage = currentPage * 10 - 9;
-  const dataLengthPage = currentPage * 10;
+  const indexDataStartForPage = dataLimit * currentPage - dataLimit + 1;
+  const dataLengthPage = dataLimit * currentPage;
+
   return (
     <div className="dataTable-info">
-      {dataLengthPage > dataLength ? (
+      {dataLengthPage < dataLength ? (
         <p>
-          Showing {indexDataStartForPage} to {dataLength} of {dataLength}{" "}
+          Showing {indexDataStartForPage} to {dataLengthPage} of {dataLength}{" "}
           entries
         </p>
       ) : (
         <p>
-          Showing {indexDataStartForPage} to {dataLengthPage} of {dataLength}{" "}
+          Showing {indexDataStartForPage} to {dataLength} of {dataLength}{" "}
           entries
         </p>
       )}
