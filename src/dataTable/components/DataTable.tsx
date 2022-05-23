@@ -11,6 +11,7 @@ import TableHead from "./TableHead.tsx";
 import TableLength from "./TableLength.tsx";
 // @ts-ignore
 import TableSearch from "./TableSearch.tsx";
+import { getFilterData } from "../services/returnData.js";
 
 interface TableProps {
   data: Array<any>;
@@ -30,7 +31,6 @@ const DataTable: React.FC<TableProps> = ({ data }) => {
     { label: "Zip Code", id: "zipCode", type: "number" },
   ];
 
-  // const [order, setOrder] = useState({ id: "", order: "" });
   const [valueSearch, setValueSearch] = useState("");
   const [order, setOrder] = useState({
     order: "ASC",
@@ -39,23 +39,6 @@ const DataTable: React.FC<TableProps> = ({ data }) => {
   });
   const [currentPage, setCurrentPage] = useState(1);
   const [dataLimit, setDataLimit] = useState(10);
-
-  /**
-   *
-   * Change ASC and DESC for column cliked
-   * @param col column clicked for sort
-   */
-  const sorting = (col, type) => {
-    if (order.column === col) {
-      setOrder({
-        order: order.order === "ASC" ? "DESC" : "ASC",
-        column: col,
-        type: type,
-      });
-    } else {
-      setOrder({ order: "ASC", column: col, type: type });
-    }
-  };
 
   /**
    * Get value for search input ok dataTable
@@ -73,80 +56,13 @@ const DataTable: React.FC<TableProps> = ({ data }) => {
     setDataLimit(valueTarget);
   };
 
-  /**
-   * Sort data on clicked column
-   * @param data data of dataTable
-   */
-  const getSort = (data) => {
-    // Sort date type
-    if (order.type === "date") {
-      if (order.order === "ASC" && order.column) {
-        const sorted = data
-          .slice(0)
-          .sort((a, b) =>
-            new Date(a[order.column]) > new Date(b[order.column]) ? 1 : -1
-          );
-        return sorted;
-      }
-      if (order.order === "DESC" && order.column) {
-        const sorted = data
-          .slice(0)
-          .sort((a, b) =>
-            new Date(a[order.column]) < new Date(b[order.column]) ? 1 : -1
-          );
-        return sorted;
-      }
-    }
-
-    // Sort number type
-    if (order.type === "number") {
-      if (order.order === "ASC" && order.column) {
-        return data.sort((a, b) =>
-          a[order.column] > b[order.column] ? 1 : -1
-        );
-      }
-      if (order.order === "DESC" && order.column) {
-        return data.sort((a, b) =>
-          a[order.column] < b[order.column] ? 1 : -1
-        );
-      }
-    }
-    // Sort string type
-    if (order.order === "ASC" && order.column) {
-      return data.sort((a, b) =>
-        a[order.column].toLowerCase() > b[order.column].toLowerCase() ? 1 : -1
-      );
-    }
-    if (order.order === "DESC" && order.column) {
-      return data.sort((a, b) =>
-        a[order.column].toLowerCase() < b[order.column].toLowerCase() ? 1 : -1
-      );
-    }
-    return data;
-  };
-
-  /**
-   * Get data filtered for dataTable
-   * @returns data sorted if click on column, or data filtered with search input or data with pagination
-   */
-  const getFilterData = () => {
-    // Sort data on clicked column
-    const filterData = getSort(data);
-    // If use search input
-    if (valueSearch.length >= 1) {
-      const dataFilter = filterData.filter((element) =>
-        JSON.stringify(Object(element))
-          .toLowerCase()
-          .includes(valueSearch.toLowerCase())
-      );
-      return dataFilter;
-    }
-    // Pagination
-    const startIndex = currentPage * dataLimit - dataLimit;
-    const endIndex = startIndex + dataLimit;
-    const sliceData = filterData.slice(startIndex, endIndex);
-    return sliceData;
-  };
+  const filterData = getFilterData(
+    data,
+    order,
+    valueSearch,
+    currentPage,
+    dataLimit
+  );
 
   return (
     <div className="container-data-table">
@@ -154,11 +70,20 @@ const DataTable: React.FC<TableProps> = ({ data }) => {
         <TableLength onChangeSelect={onChangeSelect} />
         <TableSearch onChangeSearch={onChangeSearch} />
       </div>
-
       <table id="data-table">
-        <TableHead columns={columns} sorting={sorting} iconSort={order} />
-        <TableBody columns={columns} data={getFilterData()} />
+        <TableHead columns={columns} order={order} setOrder={setOrder} />
+        <TableBody
+          columns={columns}
+          data={getFilterData(data, order, valueSearch, currentPage, dataLimit)}
+        />
       </table>
+      <div>
+        {filterData.length < 1 ? (
+          <div className="no-data">
+            <p>No data found</p>
+          </div>
+        ) : null}
+      </div>
       <div className="data-table-bottom">
         <TableDataInfo
           dataLimit={dataLimit}
