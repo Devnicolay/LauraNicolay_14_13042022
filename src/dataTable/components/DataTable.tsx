@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // @ts-ignore
 import Pagination from "./Pagination.tsx";
 // @ts-ignore
@@ -55,6 +55,10 @@ const DataTable: React.FC<TableProps> = ({ data }) => {
   const onChangeSelect = (valueTarget) => {
     setDataLimit(valueTarget);
   };
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [valueSearch, dataLimit]);
 
   const filterData = getFilterData(
     data,
