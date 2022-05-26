@@ -8,11 +8,11 @@ interface TableBodyProps {
 const TableBody: React.FC<TableBodyProps> = ({ columns, data }) => {
   return (
     <tbody>
-      {data.map((item) => {
+      {data.map((item, index) => {
         return (
-          <tr>
+          <tr key={index}>
             {columns.map((col) => {
-              return <td>{item[col.id]}</td>;
+              return <td key={col.id}>{item[col.id]}</td>;
             })}
           </tr>
         );
