@@ -1,5 +1,5 @@
 import { render, fireEvent, waitFor, screen } from "@testing-library/react";
-import Pagination from "./Pagination";
+import Pagination from "../components/Pagination";
 
 describe("Given I am on dataTable page", () => {
   test("Then, pagination of data table is render", () => {

@@ -1,5 +1,5 @@
 import { render, fireEvent, waitFor, screen } from "@testing-library/react";
-import DataTable from "./DataTable";
+import DataTable from "../components/DataTable";
 import { columns } from "../columns";
 
 describe("Given I am on dataTable page", () => {

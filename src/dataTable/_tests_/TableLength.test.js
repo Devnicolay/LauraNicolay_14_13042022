@@ -1,5 +1,5 @@
 import { render, fireEvent, waitFor, screen } from "@testing-library/react";
-import TableLength from "./TableLength";
+import TableLength from "../components/TableLength";
 
 describe("Given I am on dataTable page and I select number of show entries", () => {
   test("Then, dataTable call callback function on input change", () => {

@@ -1,5 +1,5 @@
 import { render, fireEvent, waitFor, screen } from "@testing-library/react";
-import TableSearch from "./TableSearch";
+import TableSearch from "../components/TableSearch";
 
 describe("Given I am on dataTable page", () => {
   test("Then, display search input", () => {

@@ -1,5 +1,5 @@
 import { render, fireEvent, waitFor, screen } from "@testing-library/react";
-import TableDataInfo from "./TableDataInfo";
+import TableDataInfo from "../components/TableDataInfo";
 
 describe("Given I am on dataTable page", () => {
   test("that dataTable info for number of data on current page is render", () => {
