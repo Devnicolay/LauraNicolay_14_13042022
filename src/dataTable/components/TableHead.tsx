@@ -27,6 +27,7 @@ const TableHead: React.FC<TableHeadProps> = ({ columns, order, setOrder }) => {
               id={item.id}
               key={item.id}
               onClick={() => sorting(item.id, item.type, order, setOrder)}
+              data-testid={item.id}
             >
               {item.label}
               <div className="icons-sort">

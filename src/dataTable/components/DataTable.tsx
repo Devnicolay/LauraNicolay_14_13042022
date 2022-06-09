@@ -85,7 +85,6 @@ const DataTable: React.FC<TableProps> = ({ data, columns }) => {
         <Pagination
           data={data}
           dataLimit={dataLimit}
-          pageLimit="5"
           setCurrentPage={setCurrentPage}
           currentPage={currentPage}
         />

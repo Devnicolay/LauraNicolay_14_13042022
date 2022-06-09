@@ -3,7 +3,6 @@ import React, { useState } from "react";
 interface PaginationProps {
   data: Array<any>;
   dataLimit: number;
-  pageLimit: number;
   setCurrentPage: any;
   currentPage: any;
 }
@@ -11,12 +10,10 @@ interface PaginationProps {
 const Pagination: React.FC<PaginationProps> = ({
   data,
   dataLimit,
-  pageLimit,
   setCurrentPage,
   currentPage,
 }) => {
   const [pages, setPages] = useState(Math.ceil(data.length / dataLimit));
-  //   const [currentPage, setCurrentPage] = useState(1);
 
   const goToNextPage = () => {
     setCurrentPage(currentPage + 1);
@@ -31,28 +28,33 @@ const Pagination: React.FC<PaginationProps> = ({
     setCurrentPage(pageNumber);
   };
 
-  const getPaginationGroup = () => {
-    let start = Math.floor((currentPage - 1) / pageLimit) * pageLimit;
-    return new Array(pageLimit).fill().map((_, idx) => start + idx + 1);
-  };
+  let pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(data.length / dataLimit); i++) {
+    pageNumbers.push(i);
+  }
+
   return (
     <div className="pagination">
       {/* previous button */}
       <button
         onClick={goToPreviousPage}
         className={`prev ${currentPage === 1 ? "disabled" : ""}`}
+        data-testid="prev-button"
       >
         Previous
       </button>
 
       {/* show page number */}
-      {getPaginationGroup().map((item, index) => (
+      {pageNumbers.map((number) => (
         <button
-          key={index}
+          key={number}
           onClick={changePage}
-          className={`paginationItem ${currentPage === item ? "active" : null}`}
+          className={`paginationItem ${
+            currentPage === number ? "active" : null
+          }`}
+          data-testid="page-number"
         >
-          <span>{item}</span>
+          <span>{number}</span>
         </button>
       ))}
 
@@ -60,6 +62,7 @@ const Pagination: React.FC<PaginationProps> = ({
       <button
         onClick={goToNextPage}
         className={`next ${currentPage === pages ? "disabled" : ""}`}
+        data-testid="next-button"
       >
         Next
       </button>
