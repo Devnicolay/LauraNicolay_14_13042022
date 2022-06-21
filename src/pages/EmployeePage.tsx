@@ -2,10 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { pathHome } from "../App";
 import { employeesListContext } from "../Context/ContextProvider";
-// @ts-ignore
-import DataTable from "../dataTable/components/DataTable.tsx";
-// import columns for dataTable
-import { columns } from "../dataTable/columns";
+import DataTable from "datatable_react_nicolay";
+import { columns } from "../columns/columns";
 
 const EmployeePage = () => {
   const context = React.useContext(employeesListContext);
@@ -16,9 +14,6 @@ const EmployeePage = () => {
         <h1>Current Employees</h1>
       </div>
       <div className="container">
-        {/* {context.employees.map((employee, index) => (
-                <p key={index}>{employee.firstName} {employee.lastName} {employee.dateOfBirth} {employee.startDate} {employee.street} {employee.city} {employee.state} {employee.zipCode} {employee.department} </p>
-            ))} */}
         <DataTable data={context.employees} columns={columns} />
         <Link to={pathHome}>Home</Link>
       </div>
