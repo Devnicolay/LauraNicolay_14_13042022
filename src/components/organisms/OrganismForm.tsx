@@ -10,7 +10,6 @@ import MoleculeFieldText from "../molecules/MoleculeFieldText.tsx";
 import MoleculeDatePicker from "../molecules/MoleculeDatePicker.tsx";
 // @ts-ignore
 import MoleculeFieldsetAddress from "../molecules/MoleculeFieldsetAddress.tsx";
-import { states } from "../../assets/statesList";
 // @ts-ignore
 import MoleculeDataList from "../molecules/MoleculeDataList.tsx";
 import { employeesListContext } from "../../Context/ContextProvider";
@@ -30,7 +29,6 @@ interface Values {
 }
 
 const SignUpSchema = Yup.object().shape({
-  // email: Yup.string().email('Invalid email address').required('Required'),
   firstName: Yup.string()
     .min(2, "Must be longer than 2 characters")
     .max(20, "Nice try, nobody has a first name that long")
@@ -93,10 +91,9 @@ const OrganismForm = () => {
         zipCode: "",
         department: "Sales",
       }}
-      // validationSchema={SignUpSchema}
+      validationSchema={SignUpSchema}
       onSubmit={(values: Values, { setSubmitting }: FormikHelpers<Values>) => {
         setTimeout(() => {
-          // alert(JSON.stringify(values, null, 2));
           setSubmitting(false);
         }, 500);
         context.addEmployee({

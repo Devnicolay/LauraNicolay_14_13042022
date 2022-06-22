@@ -8,7 +8,7 @@
     "@fortawesome/react-fontawesome": "^0.1.18",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/user-event": "^13.5.0",
-    "datatable_react_nicolay": "^0.1.92",
+    "datatable_react_nicolay": "^0.2.1",
     "formik": "^2.2.9",
     "react": "^18.0.0",
     "react-datepicker": "^4.7.0",

@@ -3,11 +3,8 @@ import { Link } from "react-router-dom";
 import { pathEmployeePage } from "../App";
 // @ts-ignore
 import OrganismForm from "../components/organisms/OrganismForm.tsx";
-import { employeesListContext } from "../Context/ContextProvider";
 
 const Home = () => {
-  const context = React.useContext(employeesListContext);
-
   return (
     <div className="home-page">
       <div className="title">
