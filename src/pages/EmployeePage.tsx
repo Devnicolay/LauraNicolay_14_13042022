@@ -4,6 +4,7 @@ import { pathHome } from "../App";
 import { employeesListContext } from "../Context/ContextProvider";
 import DataTable from "datatable_react_nicolay";
 import { columns } from "../columns/columns";
+import "datatable_react_nicolay/dist/cjs/styles/style.css";
 
 const EmployeePage = () => {
   const context = React.useContext(employeesListContext);

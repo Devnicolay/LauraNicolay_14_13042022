@@ -37,14 +37,6 @@ const SignUpSchema = Yup.object().shape({
     .min(2, "Must be longer than 2 characters")
     .max(20, "Nice try, nobody has a last name that long")
     .required("Required"),
-  // dateOfBirth: Yup.date()
-  // .min(8, 'Select a date of birth')
-  // .max(20, 'Nice try, nobody has a date of birth that long')
-  // .required('Required'),
-  // startDate: Yup.date()
-  // .min(8, 'Select a start date')
-  // .max(20, 'Nice try, nobody has a start date that long')
-  // .required('Required'),
   street: Yup.string()
     .min(2, "Must be a street")
     .max(40, "Nice try, nobody has a street that long")
@@ -53,14 +45,7 @@ const SignUpSchema = Yup.object().shape({
     .min(2, "Must be a city")
     .max(40, "Nice try, nobody has a city that long")
     .required("Required"),
-  // state: Yup.string()
-  // .min(2, 'Select a state')
-  // .max(40, 'Nice try, nobody has a state that long')
-  // .required('Required'),
-  // zipCode: Yup.number()
-  // .min(2, 'Must be a zip code')
-  // .max(8, 'Nice try, nobody has a zip code that long')
-  // .required('Required'),
+  zipCode: Yup.number().min(2, "Must be a zip code").required("Required"),
   department: Yup.string()
     .min(2, "Select a department")
     .max(40, "Nice try, nobody has a department that long")
